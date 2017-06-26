@@ -19,7 +19,8 @@ You can see an example in [./config.example.json].
 
 In config.json: 
 - baseUrl: where your site will be hosted. This is used to check incoming requests for dns rebinding and to  calculate some callback urls for the idp code login (although this can be overwritten)
-- appOrigins: the origins where the server should accept CORS calls (Web) from, basically where your client app is hosted
+- appOrigins: the origins where the server should accept CORS calls (Web) from, basically where your client app is hosted. 
+    This isn't necessary for Realm or mobile only applications.  
 - zeroKit: This object contains all the ZeroKit related configurations
   - serviceUrl: The service url displayed on the management portal
   - adminKey: The either one of the admin keys that you can copy from the portal
@@ -31,6 +32,7 @@ In config.json:
     - clientSecret: The client secret of the client 
     - callbackURL: Where the IDP process redirects to, overriding the automatic calculation.
                     Required for hybrid flow (mobile) clients and optional for code flow (web) clients.
+                    If this is an SDK client you can find this on the IDP client's settings page, along with the above two. 
 
 Please keep in mind, that many of these settings are used for strict, case-sensitive character matching, so they should be the same as on the management portal character-to-character.
 
@@ -43,44 +45,10 @@ of your client applications.
 
 You can enable the Identity Provider by clicking the switch next to the Identity Provider header. It is enabled if it's blue.
 
-#### Web
-To add a client that will be used in a web app:
-- Click Add client
-- Enter the name of the client e.g.: Website
-- Enter the url where you the client is allowed to be redirected below Redirect URLs. 
-    
-    In this example it will be something like: 
-    - https://your-website.com/api/auth/callback
-    - http://localhost:3000/api/auth/callback
-- Click Add next to the URL. The entered url should appear below the button.
-- Repeat the 2 steps above to add all redirection urls (e.g.: both localhost and a remotely hosted url).
-
-    I don't recommend using multiple redirect urls on the same client, 
-    you should instead create a client each for each deployed backend. 
-- Click Advanced options
-- Choose the Authorization Code from the dropdown below Flow. It should be selected by default.
-- Click Apply
-- Now you need to add the client to the IDP portion of your config.json    
-    See [above](#configuration) for details or see an example in [./config.example.json].
-    
-Please keep in mind, that all the settings will be used for strict, case-sensitive matching, so you should take care that the settings on the management portal and the settings in the config match character-to-character.
-
 #### Mobile/Realm app
 To add a client that will be used in a mobile app:
-- Click Add client
+- Click Add SDK client
 - Enter the name of the client e.g.: Mobile App 1
-- Enter the following url below Redirect URLs:
-    https://{client_id}.{tenant_id}.tresorit.io/
-    Where:
-    - {client_id} is the Id displayed below Client ID
-    - {tenant_id} is the part of the Client ID before the _
-    
-    E.g.: https://tenant1234_client1234.tenant1234.tresorit.io
-    
-    (It's the client_id subdomain of your service url.)
-- Click Add next to the URL. The entered url should appear below the button.
-- Click Advanced options
-- Choose the Hybrid from the dropdown below Flow.
 - Click Apply
 - Now you need to add the client to the IDP portion of your config.json    
     See [above](#configuration) for details or see an example in [./config.example.json].
