@@ -33,7 +33,8 @@ app.use(
 function dnsRebindingProtection(allowedHosts) {
   return function(req, res, next) {
     if (allowedHosts.indexOf(req.hostname) !== -1) return next();
-    console.log("rebinding block", req.hostname);
+    console.log("rebinding block blocked access to this server that was made to host: ", req.hostname);
+    console.log("if it shouldn't block, please set the baseUrl property in the config to this host");
     return res.status(403).send();
   };
 }
@@ -166,8 +167,7 @@ app.use("/api", zkitApi.router);
 app.use("/zkit-sdk.js", (req, res) =>
   res.redirect(`${config.zeroKit.serviceUrl}/static/v${config.zeroKit.sdkVersion}/zkit-sdk.js`));
 
-app.use(express.static(path.join(__dirname, "static/")));
-app.use("/", (req, res, next) => res.redirect("/index.html"));
+app.use(express.static(path.join(__dirname, "./static/")));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

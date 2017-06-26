@@ -13,7 +13,7 @@ if (!config.zeroKit.serviceUrl.match(/^https?:\/\/\w+\.api\.tresorit\.io$/))
 
 module.exports = {
   baseUrl: config.baseUrl,
-  appOrigins: config.appOrigins,
+  appOrigins: config.appOrigins || [],
 
   zeroKit: {
     adminUserId: config.zeroKit.adminUserId,
