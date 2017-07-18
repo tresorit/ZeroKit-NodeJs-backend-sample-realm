@@ -4,7 +4,7 @@
     "serviceUrl": "Replace with the Service URL from the ZeroKit portal",
     "adminUserId": "Replace with the Admin user ID from the ZeroKit portal",
     "adminKey": "Replace with the Primary Admin Key from the ZeroKit portal",
-    "sdkVersion": "4",
+    "sdkVersion": "5",
     "idp": [
       {
         "clientID": "Replace with the client id of the new client you created on the ZeroKit portal",
