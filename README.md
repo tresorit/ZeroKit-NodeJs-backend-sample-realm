@@ -1,3 +1,5 @@
+**Notice:** This project is discontinued and no longer maintained nor supported by Tresorit. This repository only exists for archival purposes.
+***
 # ZeroKit Node sample backend
 [![Build Status](https://travis-ci.org/tresorit/ZeroKit-NodeJs-backend-sample-realm.svg?branch=master)](https://travis-ci.org/tresorit/ZeroKit-NodeJs-backend-sample-realm)
 [![Coverage Status](https://coveralls.io/repos/github/tresorit/ZeroKit-NodeJs-backend-sample-realm/badge.svg?branch=master)](https://coveralls.io/github/tresorit/ZeroKit-NodeJs-backend-sample-realm?branch=master)
